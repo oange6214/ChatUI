@@ -1,0 +1,124 @@
+﻿<Window
+    x:Class="ChatUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:customControls="clr-namespace:ChatUI.CustomControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ChatUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:ChatUI.ViewModels"
+    Title="MainWindow"
+    Width="1400"
+    Height="800"
+    d:DataContext="{d:DesignInstance vm:MainWindowViewModel,
+                                     IsDesignTimeCreatable=True}"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95" />
+                <ColumnDefinition Width="447" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="310" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="#2A2E4D">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--#region Profile Button-->
+                <customControls:RoundProfileButton Width="50" ProfileImageSource="/Assets/Images/profile1.jpg" />
+                <!--#endregion-->
+
+                <customControls:MenuListControl Grid.Row="1" Margin="0,50,0,0" />
+            </Grid>
+
+            <StackPanel
+                Grid.Column="1"
+                Margin="0,30,0,0"
+                Orientation="Vertical">
+                <Grid Margin="30,0,30,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="90" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--#region SearchBar-->
+                    <Border
+                        Grid.Column="0"
+                        Height="auto"
+                        Background="Transparent"
+                        Visibility="{Binding Visibility}">
+
+                        <!--  To make our Textbox round from corners we used this border  -->
+                        <Border
+                            Height="48"
+                            HorizontalAlignment="Stretch"
+                            Background="#F8F6F7"
+                            CornerRadius="25">
+                            <Grid Height="auto">
+                                <Grid.ColumnDefinitions>
+                                    <!--  Column for our search icon  -->
+                                    <ColumnDefinition Width="60" />
+
+                                    <!--  Column for our textbox  -->
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--  Placing Search icon  -->
+                                <Image
+                                    Width="25"
+                                    Source="/Assets/Images/search.png"
+                                    Stretch="Uniform" />
+
+                                <TextBox
+                                    x:Name="searchQuery"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="16"
+                                    TextAlignment="Left" />
+
+                                <!--  Placing placeholder/watermark text for out textbox  -->
+                                <TextBlock
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    FontWeight="SemiBold"
+                                    Foreground="#B7B5B8"
+                                    IsHitTestVisible="False"
+                                    Text="Enter to search..."
+                                    TextAlignment="Left">
+                                    <!--  To make our watermark text hide on mouse click we need to set triggers  -->
+
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed" />
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=searchQuery}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                    </Border>
+                    <!--#endregion-->
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
