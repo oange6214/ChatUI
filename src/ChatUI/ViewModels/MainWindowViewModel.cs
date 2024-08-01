@@ -13,6 +13,8 @@ public class MainWindowViewModel : ObservableObject
         set => SetProperty(ref _itemList, value);
     }
 
+    public List<string> SortBy => ["Latest First"];
+
     public MainWindowViewModel()
     {
         ItemList.Add(new MenuItems()
