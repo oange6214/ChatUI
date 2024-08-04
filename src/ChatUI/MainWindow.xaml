@@ -20,11 +20,20 @@
     <Border>
         <Grid>
             <Grid.ColumnDefinitions>
+
+                <!--  Menu List  -->
                 <ColumnDefinition Width="95" />
+
+                <!--  Chat List  -->
                 <ColumnDefinition Width="447" />
+
+                <!--  Chat Screen  -->
                 <ColumnDefinition Width="*" />
+
                 <ColumnDefinition Width="310" />
             </Grid.ColumnDefinitions>
+
+            <!--#region Menu List-->
 
             <Grid Grid.Column="0" Background="#2A2E4D">
                 <Grid.RowDefinitions>
@@ -43,7 +52,10 @@
                 <customControls:MenuListControl Grid.Row="1" Margin="0,50,0,0" />
             </Grid>
 
-            <!--  Chat List  -->
+            <!--#endregion-->
+
+            <!--#region Chat List-->
+
             <StackPanel
                 Grid.Column="1"
                 Margin="0,30,0,0"
@@ -212,7 +224,9 @@
                 <!--#endregion-->
             </StackPanel>
 
-            <!--#region Chat Screent-->
+            <!--#endregion-->
+
+            <!--#region Chat Screen-->
 
             <Border
                 Grid.Column="2"
@@ -221,8 +235,14 @@
 
                 <Grid>
                     <Grid.RowDefinitions>
+
+                        <!--  Conversation Screen Header  -->
                         <RowDefinition Height="100" />
+
+                        <!--  Conversation in chat screen  -->
                         <RowDefinition Height="*" />
+
+                        <!--  Message Textbox and Emoji panel  -->
                         <RowDefinition Height="80" />
                     </Grid.RowDefinitions>
 
@@ -298,7 +318,7 @@
 
                     <!--#endregion-->
 
-                    <!--  Now we need to design our conversation in chat screen, we will use list control for so.  -->
+                    <!--  Conversation in chat screen  -->
                     <customControls:Conversation
                         Grid.Row="1"
                         Grid.ColumnSpan="3"
@@ -397,6 +417,226 @@
                     </Grid>
                 </Grid>
             </Border>
+
+            <!--#endregion-->
+
+            <!--#region Contact Profile-->
+
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--  Close Button  -->
+                <Image
+                    Height="30"
+                    Margin="0,7,22,0"
+                    HorizontalAlignment="Right"
+                    Source="/Assets/Images/close.png"
+                    Stretch="Uniform" />
+
+                <StackPanel Grid.Row="1" Orientation="Vertical">
+                    <customControls:RoundProfileButton
+                        Width="160"
+                        Height="160"
+                        ProfileImageSource="/Assets/Images/profile1.jpg"
+                        StrokeBrush="WhiteSmoke" />
+
+                    <!--  Contact Profile Info  -->
+                    <TextBlock
+                        Margin="0,18,0,0"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Text="Tobias Williams"
+                        TextAlignment="Center" />
+                    <TextBlock
+                        Margin="0,6,0,0"
+                        FontSize="17"
+                        Foreground="#B7B5B8"
+                        Text="Paris, France"
+                        TextAlignment="Center" />
+                    <TextBlock Margin="0,18,0,0" TextAlignment="Center">
+                        <Run FontSize="14" Text="Help people to build websites and apps" />
+                        <LineBreak />
+                        <Run FontSize="14" Text="+ grow awareness in social media" />
+                    </TextBlock>
+
+                    <!--  Social Media Links  -->
+                    <UniformGrid
+                        Width="150"
+                        Margin="0,25,0,0"
+                        HorizontalAlignment="Center"
+                        Columns="3">
+                        <Ellipse Width="40" Height="40">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Assets/Images/facebook.png" Stretch="Uniform" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="40" Height="40">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Assets/Images/twitter.png" Stretch="Uniform" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Ellipse Width="34" Height="34">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Assets/Images/insta.png" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </UniformGrid>
+
+                    <Separator
+                        Width="240"
+                        Margin="0,25,0,0"
+                        Background="#B7B5B8"
+                        Focusable="False" />
+
+                    <!--  Contact Details  -->
+                    <TextBlock Margin="30,25,0,0" TextAlignment="Left">
+                        <Run
+                            FontSize="14"
+                            Foreground="#B7B5B8"
+                            Text="Phone:    " />
+                        <Run FontSize="14" Text="+(886)978 012 345" />
+                    </TextBlock>
+                    <TextBlock Margin="30,10,0,0" TextAlignment="Left">
+                        <Run
+                            FontSize="14"
+                            Foreground="#B7B5B8"
+                            Text="E-mail:     " />
+                        <Run FontSize="14" Text="jdscodelab@gmail.com" />
+                    </TextBlock>
+                    <TextBlock Margin="30,10,0,0" TextAlignment="Left">
+                        <Run
+                            FontSize="14"
+                            Foreground="#B7B5B8"
+                            Text="DOB:       " />
+                        <Run FontSize="14" Text="14.05.1992" />
+                    </TextBlock>
+
+                    <Separator
+                        Width="240"
+                        Margin="0,25,0,0"
+                        Background="#B7B5B8"
+                        Focusable="False" />
+
+                    <!--  Media  -->
+                    <Grid Margin="30,27,30,0">
+                        <TextBlock
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Foreground="#B7B5B8"
+                            Text="Media (31)"
+                            TextAlignment="Left" />
+                        <TextBlock
+                            FontSize="14"
+                            Foreground="#F54A4A"
+                            Text="See all&gt;"
+                            TextAlignment="Right" />
+                    </Grid>
+                    <UniformGrid
+                        Margin="30,17,30,0"
+                        HorizontalAlignment="Center"
+                        Columns="3">
+                        <Image
+                            Height="76"
+                            Source="/Assets/Images/image1.jpg"
+                            Stretch="UniformToFill" />
+                        <Image
+                            Height="76"
+                            Source="/Assets/Images/image2.jpg"
+                            Stretch="UniformToFill" />
+                        <Image
+                            Height="76"
+                            Source="/Assets/Images/image3.jpg"
+                            Stretch="UniformToFill" />
+                    </UniformGrid>
+                </StackPanel>
+            </Grid>
+
+            <!--#endregion-->
+
+            <!--#region Emoji panel-->
+
+            <Grid
+                Grid.Column="2"
+                Width="310"
+                Height="60"
+                Margin="0,685,95,55"
+                HorizontalAlignment="Right">
+                <Border>
+                    <Border.Style>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect
+                                        BlurRadius="20"
+                                        Direction="-90"
+                                        ShadowDepth="6"
+                                        Color="LightGray" />
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Border.Style>
+
+                    <Grid>
+                        <!--  This is our emoji container  -->
+                        <Rectangle
+                            Width="auto"
+                            Height="50"
+                            VerticalAlignment="Top"
+                            Fill="White"
+                            RadiusX="20"
+                            RadiusY="20" />
+
+                        <!--  And this one will be our pointer below the container which i will show you now.  -->
+                        <Rectangle
+                            Width="20"
+                            Height="20"
+                            Margin="0,0,47,-6"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Fill="White">
+                            <!--  We need to rotate our tactangle to -45 degree to achieve the pointing style  -->
+                            <Rectangle.RenderTransform>
+                                <RotateTransform Angle="-45" />
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+
+                        <!--  Now lets add some emoji's in our container rectangle  -->
+                        <UniformGrid Margin="0,0,0,10" Columns="7">
+                            <Image
+                                Height="20"
+                                Source="/Assets/Images/muscle.png"
+                                Stretch="Uniform" />
+                            <Image
+                                Height="20"
+                                Source="/Assets/Images/smile.png"
+                                Stretch="Uniform" />
+                            <Image
+                                Height="20"
+                                Source="/Assets/Images/wink.png"
+                                Stretch="Uniform" />
+                            <Image
+                                Height="20"
+                                Source="/Assets/Images/pray.png"
+                                Stretch="Uniform" />
+                            <Image
+                                Height="20"
+                                Source="/Assets/Images/one.png"
+                                Stretch="Uniform" />
+                            <Image
+                                Height="20"
+                                Source="/Assets/Images/ok.png"
+                                Stretch="Uniform" />
+                            <Image
+                                Height="20"
+                                Source="/Assets/Images/more.png"
+                                Stretch="Uniform" />
+                        </UniformGrid>
+                    </Grid>
+                </Border>
+            </Grid>
 
             <!--#endregion-->
         </Grid>
