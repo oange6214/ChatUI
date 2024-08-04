@@ -1,21 +1,83 @@
 ﻿using ChatUI.Models;
+using System.Collections.ObjectModel;
 using Toolkit.Mvvm.ComponentModel;
 
 namespace ChatUI.ViewModels;
 
 public class MainWindowViewModel : ObservableObject
 {
-    private List<MenuItems> _itemList = [];
+    private ObservableCollection<ChatListItems> _chatListItems = [];
+    private ObservableCollection<MenuItems> _itemList = [];
 
-    public List<MenuItems> ItemList
+    public MainWindowViewModel()
+    {
+        InitItemList();
+        InitChatListItems();
+    }
+
+    public ObservableCollection<ChatListItems> ChatListItems
+    {
+        get => _chatListItems;
+        set => SetProperty(ref _chatListItems, value);
+    }
+
+    public ObservableCollection<MenuItems> ItemList
     {
         get => _itemList;
         set => SetProperty(ref _itemList, value);
     }
 
-    public List<string> SortBy => ["Latest First"];
+    private void InitChatListItems()
+    {
+        ChatListItems.Add(new ChatListItems()
+        {
+            IsChatSelected = false,
+            ContactProfilePicUri = "/Assets/Images/logowhiteback.png",
+            ContactName = "Jed",
+            LastMessageTime = "10:30 PM",
+            Availability = "Online",
+            IsRead = true,
+            Message = "Check out new video uploaded just now!",
+            NewMsgCount = "1",
+            IsOnline = true,
+        });
 
-    public MainWindowViewModel()
+        ChatListItems.Add(new ChatListItems()
+        {
+            IsChatSelected = false,
+            ContactProfilePicUri = "/Assets/Images/profile1.jpg",
+            ContactName = "Anna Dormun",
+            LastMessageTime = "14:45 PM",
+            Availability = "Offline",
+            IsRead = true,
+            Message = "Its seems logical that the strategy of providing!",
+        });
+
+        ChatListItems.Add(new ChatListItems()
+        {
+            IsChatSelected = true,
+            ContactProfilePicUri = "/Assets/Images/profile1.jpg",
+            ContactName = "Tobias Williams",
+            LastMessageTime = "06:18 AM",
+            Availability = "Offline",
+            IsRead = false,
+            Message = "I remember everything mate. See you later",
+        });
+
+        ChatListItems.Add(new ChatListItems()
+        {
+            IsChatSelected = false,
+            ContactProfilePicUri = "/Assets/Images/profile1.png",
+            ContactName = "Jennifer Watkins",
+            LastMessageTime = "15 Sep 2019",
+            Availability = "Online",
+            IsRead = false,
+            Message = "I will miss you, too, my dear!",
+            IsOnline = true,
+        });
+    }
+
+    private void InitItemList()
     {
         ItemList.Add(new MenuItems()
         {

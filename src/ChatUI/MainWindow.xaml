@@ -15,7 +15,7 @@
                                      IsDesignTimeCreatable=True}"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
+    WindowStyle="None" MouseDown="Window_MouseDown"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -661,6 +661,12 @@
                         </Button>
                     </Grid>
                 </Grid>
+                <!--#endregion-->
+
+                <!--#region ChatList-->
+
+                <customControls:ChatList />
+
                 <!--#endregion-->
             </StackPanel>
         </Grid>

@@ -3,11 +3,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:ChatUI.CustomControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:ChatUI.ViewModels"
     x:Name="profileButton"
     Width="50"
     Height="50"
+    d:DataContext="{d:DesignInstance vm:MainWindowViewModel,
+                                     IsDesignTimeCreatable=True}"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -15,7 +17,7 @@
 
         <Style x:Key="AvailabilityStyle" TargetType="{x:Type Ellipse}">
             <Setter Property="StrokeThickness" Value="4" />
-            <Setter Property="Stroke" Value="{Binding ElementName=profileButton, Path=StrokeBrush, FallbackValue=WhiteSmoke, TargetNullValue=WhiteSmoke}" />
+            <Setter Property="Stroke" Value="{Binding ElementName=profileButton, Path=StrokeBrush, FallbackValue=White, TargetNullValue=White}" />
             <Setter Property="Width" Value="15" />
             <Setter Property="Height" Value="15" />
             <Setter Property="HorizontalAlignment" Value="Left" />
