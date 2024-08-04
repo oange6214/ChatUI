@@ -108,7 +108,7 @@ public class MainWindowViewModel : ObservableObject
         ChatItemList.Add(new ChatItemList()
         {
             IsChatSelected = false,
-            ContactProfilePicUri = "/Assets/Images/profile1.png",
+            ContactProfilePicUri = "/Assets/Images/profile1.jpg",
             ContactName = "Jennifer Watkins",
             LastMessageTime = "15 Sep 2019",
             Availability = "Online",

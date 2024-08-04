@@ -27,9 +27,10 @@
                 <!--  Chat List  -->
                 <ColumnDefinition Width="447" />
 
-                <!--  Chat Screen  -->
+                <!--  Chat Screen & Emoji panel  -->
                 <ColumnDefinition Width="*" />
 
+                <!--  Contact Profile  -->
                 <ColumnDefinition Width="310" />
             </Grid.ColumnDefinitions>
 
@@ -226,7 +227,7 @@
 
             <!--#endregion-->
 
-            <!--#region Chat Screen-->
+            <!--#region Chat Screen & Emoji panel-->
 
             <Border
                 Grid.Column="2"
@@ -234,187 +235,303 @@
                 BorderThickness=".5,0,.5,0">
 
                 <Grid>
-                    <Grid.RowDefinitions>
-
-                        <!--  Conversation Screen Header  -->
-                        <RowDefinition Height="100" />
-
-                        <!--  Conversation in chat screen  -->
-                        <RowDefinition Height="*" />
-
-                        <!--  Message Textbox and Emoji panel  -->
-                        <RowDefinition Height="80" />
-                    </Grid.RowDefinitions>
-
-                    <!--#region Conversation Screen Header-->
+                    <!--#region Chat Screen-->
 
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="160" />
-                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
 
-                        <customControls:RoundProfileButton
-                            Grid.Column="0"
-                            Width="50"
-                            Margin="30,0"
-                            HorizontalAlignment="Left"
-                            IsOnline="False"
-                            ProfileImageSource="/Assets/Images/profile1.jpg" />
+                            <!--  Conversation Screen Header  -->
+                            <RowDefinition Height="100" />
 
-                        <!--  Contact Name  -->
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center">
-                            <!--
-                                Since we have to add availability status and last seen text below our contact name we will
-                                break our text block in 3 run property to achieve that goal.
-                            -->
-                            <Run
-                                FontSize="17"
-                                FontWeight="Bold"
-                                Text="Tobias Williams" />
-                            <LineBreak />
-                            <Run
-                                FontSize="14"
-                                Foreground="#B7B5B8"
-                                Text="Offline" />
-                            <Run
-                                FontSize="20"
-                                FontWeight="ExtraBold"
-                                Foreground="#B7B5B8"
-                                Text=" • " />
-                            <Run
-                                FontSize="14"
-                                Foreground="#B7B5B8"
-                                Text="Last seen 3 hours ago" />
-                        </TextBlock>
+                            <!--  Conversation in chat screen  -->
+                            <RowDefinition Height="*" />
 
-                        <!--  Call and video call icons here  -->
-                        <Grid Grid.Column="3">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
+                            <!--  Message Textbox and Emoji panel  -->
+                            <RowDefinition Height="80" />
+                        </Grid.RowDefinitions>
 
-                            <UniformGrid
-                                Margin="14,30,14,0"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Top"
-                                Columns="3">
-                                <Image
-                                    Height="20"
-                                    Source="/Assets/Images/phone.png"
-                                    Stretch="Uniform" />
-                                <Image
-                                    Height="20"
-                                    Source="/Assets/Images/videocall.png"
-                                    Stretch="Uniform" />
-                                <Image
-                                    Height="20"
-                                    Source="/Assets/Images/more.png"
-                                    Stretch="Uniform" />
-                            </UniformGrid>
+                        <!--#region Conversation Screen Header-->
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="160" />
+                            </Grid.ColumnDefinitions>
+
+                            <customControls:RoundProfileButton
+                                Grid.Column="0"
+                                Width="50"
+                                Margin="30,0"
+                                HorizontalAlignment="Left"
+                                IsOnline="False"
+                                ProfileImageSource="/Assets/Images/profile1.jpg" />
+
+                            <!--  Contact Name  -->
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center">
+                                <!--
+                                    Since we have to add availability status and last seen text below our contact name we will
+                                    break our text block in 3 run property to achieve that goal.
+                                -->
+                                <Run
+                                    FontSize="17"
+                                    FontWeight="Bold"
+                                    Text="Tobias Williams" />
+                                <LineBreak />
+                                <Run
+                                    FontSize="14"
+                                    Foreground="#B7B5B8"
+                                    Text="Offline" />
+                                <Run
+                                    FontSize="20"
+                                    FontWeight="ExtraBold"
+                                    Foreground="#B7B5B8"
+                                    Text=" • " />
+                                <Run
+                                    FontSize="14"
+                                    Foreground="#B7B5B8"
+                                    Text="Last seen 3 hours ago" />
+                            </TextBlock>
+
+                            <!--  Call and video call icons here  -->
+                            <Grid Grid.Column="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <UniformGrid
+                                    Margin="14,30,14,0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Top"
+                                    Columns="3">
+
+                                    <Button Style="{StaticResource IconButtonStyle}">
+                                        <Button.Content>
+                                            <Image
+                                                Height="20"
+                                                Source="/Assets/Images/phone.png"
+                                                Stretch="Uniform" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Style="{StaticResource IconButtonStyle}">
+                                        <Button.Content>
+                                            <Image
+                                                Height="20"
+                                                Source="/Assets/Images/videocall.png"
+                                                Stretch="Uniform" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Style="{StaticResource IconButtonStyle}">
+                                        <Button.Content>
+                                            <Image
+                                                Height="20"
+                                                Source="/Assets/Images/more.png"
+                                                Stretch="Uniform" />
+                                        </Button.Content>
+                                    </Button>
+                                </UniformGrid>
+                            </Grid>
+                        </Grid>
+
+                        <!--#endregion-->
+
+                        <!--  Conversation in chat screen  -->
+                        <customControls:Conversation
+                            Grid.Row="1"
+                            Grid.ColumnSpan="3"
+                            BorderBrush="#B7B5B8" />
+
+                        <!--  Message Textbox and Emoji panel  -->
+                        <Grid Grid.Row="2" Background="White">
+                            <Border
+                                Margin="30,0,30,0"
+                                Background="Transparent"
+                                Visibility="{Binding Visibility}">
+                                <Grid>
+                                    <!--  Textbox and attachment, smiley & mic icons and send button  -->
+                                    <Border
+                                        Height="48"
+                                        HorizontalAlignment="Stretch"
+                                        Background="#F8F6F7"
+                                        CornerRadius="25">
+                                        <Grid Height="auto">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Button Style="{StaticResource IconButtonStyle}">
+                                                <Button.Content>
+                                                    <Image
+                                                        Width="25"
+                                                        Source="/Assets/Images/attachment.png"
+                                                        Stretch="Uniform" />
+                                                </Button.Content>
+                                            </Button>
+
+                                            <TextBox
+                                                x:Name="message"
+                                                Grid.Column="1"
+                                                Grid.ColumnSpan="2"
+                                                Margin="0,0,150,0"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Stretch"
+                                                VerticalContentAlignment="Center"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                FontSize="16"
+                                                TextAlignment="Left" />
+
+                                            <!--  Wafermark / Placeholder  -->
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="SemiBold"
+                                                Foreground="#B7B5B8"
+                                                IsHitTestVisible="False"
+                                                Text="Type a message here..."
+                                                TextAlignment="Left">
+
+                                                <!--  To make our watermark text hide on mouse click we need to set triggers  -->
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, ElementName=message}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+
+                                    <!--  Placing emoji and mic icons now  -->
+                                    <StackPanel
+                                        Margin="0,0,70,0"
+                                        HorizontalAlignment="Right"
+                                        Orientation="Horizontal">
+                                        <Button Style="{StaticResource IconButtonStyle}">
+                                            <Button.Content>
+                                                <Image
+                                                    Width="25"
+                                                    Source="/Assets/Images/happy.png"
+                                                    Stretch="Uniform" />
+                                            </Button.Content>
+                                        </Button>
+
+                                        <Button Style="{StaticResource IconButtonStyle}">
+                                            <Button.Content>
+                                                <Image
+                                                    Width="25"
+                                                    Source="/Assets/Images/mic.png"
+                                                    Stretch="Uniform" />
+                                            </Button.Content>
+                                        </Button>
+                                    </StackPanel>
+
+                                    <Button Style="{StaticResource SendMessageButtonStyle}">
+                                        <Button.Content>
+                                            <Image
+                                                Width="25"
+                                                Source="/Assets/Images/send.png"
+                                                Stretch="Uniform" />
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Grid>
 
                     <!--#endregion-->
 
-                    <!--  Conversation in chat screen  -->
-                    <customControls:Conversation
-                        Grid.Row="1"
-                        Grid.ColumnSpan="3"
-                        BorderBrush="#B7B5B8" />
+                    <!--#region Emoji panel-->
 
-                    <!--  Message Textbox and Emoji panel  -->
-                    <Grid Grid.Row="2" Background="White">
-                        <Border
-                            Margin="30,0,30,0"
-                            Background="Transparent"
-                            Visibility="{Binding Visibility}">
+                    <Grid
+                        Grid.Column="2"
+                        Width="310"
+                        Height="60"
+                        Margin="0,0,95,55"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                        <Border>
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect
+                                                BlurRadius="20"
+                                                Direction="-90"
+                                                ShadowDepth="6"
+                                                Color="LightGray" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Border.Style>
+
                             <Grid>
-                                <!--  Textbox and attachment, smiley & mic icons and send button  -->
-                                <Border
-                                    Height="48"
-                                    HorizontalAlignment="Stretch"
-                                    Background="#F8F6F7"
-                                    CornerRadius="25">
-                                    <Grid Height="auto">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="60" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
+                                <!--  This is our emoji container  -->
+                                <Rectangle
+                                    Width="auto"
+                                    Height="50"
+                                    VerticalAlignment="Top"
+                                    Fill="White"
+                                    RadiusX="20"
+                                    RadiusY="20" />
 
-                                        <Image
-                                            Width="25"
-                                            Source="/Assets/Images/attachment.png"
-                                            Stretch="Uniform" />
-
-                                        <TextBox
-                                            x:Name="message"
-                                            Grid.Column="1"
-                                            Grid.ColumnSpan="2"
-                                            Margin="0,0,150,0"
-                                            HorizontalAlignment="Stretch"
-                                            VerticalAlignment="Stretch"
-                                            VerticalContentAlignment="Center"
-                                            Background="Transparent"
-                                            BorderThickness="0"
-                                            FontSize="16"
-                                            TextAlignment="Left" />
-
-                                        <!--  Wafermark / Placeholder  -->
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            FontSize="16"
-                                            FontWeight="SemiBold"
-                                            Foreground="#B7B5B8"
-                                            IsHitTestVisible="False"
-                                            Text="Type a message here..."
-                                            TextAlignment="Left">
-
-                                            <!--  To make our watermark text hide on mouse click we need to set triggers  -->
-                                            <TextBlock.Style>
-                                                <Style TargetType="{x:Type TextBlock}">
-                                                    <Setter Property="Visibility" Value="Collapsed" />
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Text, ElementName=message}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible" />
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
-                                    </Grid>
-                                </Border>
-
-                                <!--  Placing emoji and mic icons now  -->
-                                <StackPanel
-                                    Margin="0,0,70,0"
+                                <!--  And this one will be our pointer below the container which i will show you now.  -->
+                                <Rectangle
+                                    Width="20"
+                                    Height="20"
+                                    Margin="0,0,47,-6"
                                     HorizontalAlignment="Right"
-                                    Orientation="Horizontal">
-                                    <Image
-                                        Width="25"
-                                        Margin="0,0,10,0"
-                                        Source="/Assets/Images/happy.png"
-                                        Stretch="Uniform" />
-                                    <Image
-                                        Width="25"
-                                        Source="/Assets/Images/mic.png"
-                                        Stretch="Uniform" />
-                                </StackPanel>
+                                    VerticalAlignment="Bottom"
+                                    Fill="White">
+                                    <!--  We need to rotate our tactangle to -45 degree to achieve the pointing style  -->
+                                    <Rectangle.RenderTransform>
+                                        <RotateTransform Angle="-45" />
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
 
-                                <Button Style="{StaticResource SendMessageButtonStyle}">
-                                    <Button.Content>
-                                        <Image
-                                            Width="25"
-                                            Source="/Assets/Images/send.png"
-                                            Stretch="Uniform" />
-                                    </Button.Content>
-                                </Button>
+                                <!--  Now lets add some emoji's in our container rectangle  -->
+                                <UniformGrid Margin="0,0,0,10" Columns="7">
+                                    <Image
+                                        Height="20"
+                                        Source="/Assets/Images/muscle.png"
+                                        Stretch="Uniform" />
+                                    <Image
+                                        Height="20"
+                                        Source="/Assets/Images/smile.png"
+                                        Stretch="Uniform" />
+                                    <Image
+                                        Height="20"
+                                        Source="/Assets/Images/wink.png"
+                                        Stretch="Uniform" />
+                                    <Image
+                                        Height="20"
+                                        Source="/Assets/Images/pray.png"
+                                        Stretch="Uniform" />
+                                    <Image
+                                        Height="20"
+                                        Source="/Assets/Images/one.png"
+                                        Stretch="Uniform" />
+                                    <Image
+                                        Height="20"
+                                        Source="/Assets/Images/ok.png"
+                                        Stretch="Uniform" />
+                                    <Image
+                                        Height="20"
+                                        Source="/Assets/Images/more.png"
+                                        Stretch="Uniform" />
+                                </UniformGrid>
                             </Grid>
                         </Border>
                     </Grid>
+
+                    <!--#endregion-->
                 </Grid>
             </Border>
 
@@ -429,12 +546,18 @@
                 </Grid.RowDefinitions>
 
                 <!--  Close Button  -->
-                <Image
-                    Height="30"
+
+                <Button
                     Margin="0,7,22,0"
                     HorizontalAlignment="Right"
-                    Source="/Assets/Images/close.png"
-                    Stretch="Uniform" />
+                    Style="{StaticResource IconButtonStyle}">
+                    <Button.Content>
+                        <Image
+                            Height="30"
+                            Source="/Assets/Images/close.png"
+                            Stretch="Uniform" />
+                    </Button.Content>
+                </Button>
 
                 <StackPanel Grid.Row="1" Orientation="Vertical">
                     <customControls:RoundProfileButton
@@ -552,90 +675,6 @@
                             Stretch="UniformToFill" />
                     </UniformGrid>
                 </StackPanel>
-            </Grid>
-
-            <!--#endregion-->
-
-            <!--#region Emoji panel-->
-
-            <Grid
-                Grid.Column="2"
-                Width="310"
-                Height="60"
-                Margin="0,685,95,55"
-                HorizontalAlignment="Right">
-                <Border>
-                    <Border.Style>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="Effect">
-                                <Setter.Value>
-                                    <DropShadowEffect
-                                        BlurRadius="20"
-                                        Direction="-90"
-                                        ShadowDepth="6"
-                                        Color="LightGray" />
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Border.Style>
-
-                    <Grid>
-                        <!--  This is our emoji container  -->
-                        <Rectangle
-                            Width="auto"
-                            Height="50"
-                            VerticalAlignment="Top"
-                            Fill="White"
-                            RadiusX="20"
-                            RadiusY="20" />
-
-                        <!--  And this one will be our pointer below the container which i will show you now.  -->
-                        <Rectangle
-                            Width="20"
-                            Height="20"
-                            Margin="0,0,47,-6"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom"
-                            Fill="White">
-                            <!--  We need to rotate our tactangle to -45 degree to achieve the pointing style  -->
-                            <Rectangle.RenderTransform>
-                                <RotateTransform Angle="-45" />
-                            </Rectangle.RenderTransform>
-                        </Rectangle>
-
-                        <!--  Now lets add some emoji's in our container rectangle  -->
-                        <UniformGrid Margin="0,0,0,10" Columns="7">
-                            <Image
-                                Height="20"
-                                Source="/Assets/Images/muscle.png"
-                                Stretch="Uniform" />
-                            <Image
-                                Height="20"
-                                Source="/Assets/Images/smile.png"
-                                Stretch="Uniform" />
-                            <Image
-                                Height="20"
-                                Source="/Assets/Images/wink.png"
-                                Stretch="Uniform" />
-                            <Image
-                                Height="20"
-                                Source="/Assets/Images/pray.png"
-                                Stretch="Uniform" />
-                            <Image
-                                Height="20"
-                                Source="/Assets/Images/one.png"
-                                Stretch="Uniform" />
-                            <Image
-                                Height="20"
-                                Source="/Assets/Images/ok.png"
-                                Stretch="Uniform" />
-                            <Image
-                                Height="20"
-                                Source="/Assets/Images/more.png"
-                                Stretch="Uniform" />
-                        </UniformGrid>
-                    </Grid>
-                </Border>
             </Grid>
 
             <!--#endregion-->
