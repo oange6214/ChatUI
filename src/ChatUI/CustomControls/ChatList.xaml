@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:ChatUI.ViewModels"
+    Width="auto"
+    Height="auto"
     d:DataContext="{d:DesignInstance vm:MainWindowViewModel,
                                      IsDesignTimeCreatable=True}"
     mc:Ignorable="d">
@@ -277,5 +279,5 @@
         </Style>
     </UserControl.Resources>
 
-    <ListBox ItemsSource="{Binding ChatListItems}" Style="{StaticResource ChatListBoxStyle}" />
+    <ListBox ItemsSource="{Binding ChatItemList}" Style="{StaticResource ChatListBoxStyle}" />
 </UserControl>

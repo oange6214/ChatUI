@@ -1,24 +1,33 @@
 ﻿using ChatUI.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
 using Toolkit.Mvvm.ComponentModel;
 
 namespace ChatUI.ViewModels;
 
 public class MainWindowViewModel : ObservableObject
 {
-    private ObservableCollection<ChatListItems> _chatListItems = [];
+    private ObservableCollection<ChatItemList> _chatItemList = [];
     private ObservableCollection<MenuItems> _itemList = [];
+    private ObservableCollection<ConversationMessageList> _conversationMessageList = [];
 
     public MainWindowViewModel()
     {
         InitItemList();
-        InitChatListItems();
+        InitChatItemList();
+        InitConversationMessageList();
     }
 
-    public ObservableCollection<ChatListItems> ChatListItems
+    public ObservableCollection<ConversationMessageList> ConversationMessageList
     {
-        get => _chatListItems;
-        set => SetProperty(ref _chatListItems, value);
+        get => _conversationMessageList;
+        set => SetProperty(ref _conversationMessageList, value);
+    }
+
+    public ObservableCollection<ChatItemList> ChatItemList
+    {
+        get => _chatItemList;
+        set => SetProperty(ref _chatItemList, value);
     }
 
     public ObservableCollection<MenuItems> ItemList
@@ -27,9 +36,41 @@ public class MainWindowViewModel : ObservableObject
         set => SetProperty(ref _itemList, value);
     }
 
-    private void InitChatListItems()
+    private void InitConversationMessageList()
     {
-        ChatListItems.Add(new ChatListItems()
+        ConversationMessageList.Add(new ConversationMessageList
+        {
+            IsAudioTrack = Visibility.Collapsed,
+            Message = "Hi Alex! What's Up?",
+            MessageStatus = "Received",
+            TimeStamp = "Yesterday 14:26 PM"
+        });
+        ConversationMessageList.Add(new ConversationMessageList
+        {
+            Message = string.Format("{0}{1}{2}", "Oh, hello! All perfectly.", Environment.NewLine, "I work, study and know this wonderful world!"),
+            MessageStatus = "Sent",
+            TimeStamp = "Yesterday 14:38 PM",
+            IsAudioTrack = Visibility.Collapsed
+        });
+        ConversationMessageList.Add(new ConversationMessageList
+        {
+            Message = "01:24",
+            MessageStatus = "Received",
+            TimeStamp = "Yesterday 19:26 PM",
+            IsAudioTrack = Visibility.Visible
+        });
+        ConversationMessageList.Add(new ConversationMessageList
+        {
+            Message = "I remeber everything mate. See you later",
+            MessageStatus = "Sent",
+            TimeStamp = "Today 06:18 AM",
+            IsAudioTrack = Visibility.Collapsed
+        });
+    }
+
+    private void InitChatItemList()
+    {
+        ChatItemList.Add(new ChatItemList()
         {
             IsChatSelected = false,
             ContactProfilePicUri = "/Assets/Images/logowhiteback.png",
@@ -42,7 +83,7 @@ public class MainWindowViewModel : ObservableObject
             IsOnline = true,
         });
 
-        ChatListItems.Add(new ChatListItems()
+        ChatItemList.Add(new ChatItemList()
         {
             IsChatSelected = false,
             ContactProfilePicUri = "/Assets/Images/profile1.jpg",
@@ -53,7 +94,7 @@ public class MainWindowViewModel : ObservableObject
             Message = "Its seems logical that the strategy of providing!",
         });
 
-        ChatListItems.Add(new ChatListItems()
+        ChatItemList.Add(new ChatItemList()
         {
             IsChatSelected = true,
             ContactProfilePicUri = "/Assets/Images/profile1.jpg",
@@ -64,7 +105,7 @@ public class MainWindowViewModel : ObservableObject
             Message = "I remember everything mate. See you later",
         });
 
-        ChatListItems.Add(new ChatListItems()
+        ChatItemList.Add(new ChatItemList()
         {
             IsChatSelected = false,
             ContactProfilePicUri = "/Assets/Images/profile1.png",

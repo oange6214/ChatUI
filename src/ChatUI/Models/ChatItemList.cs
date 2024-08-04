@@ -1,6 +1,6 @@
 ﻿namespace ChatUI.Models;
 
-public class ChatListItems
+public class ChatItemList
 {
     public string Availability { get; set; }
     public string ContactName { get; set; }
